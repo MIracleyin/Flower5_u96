@@ -7,8 +7,8 @@ import struct
 calib_batch_size = 50
 
 
-sorts_list = ['paper', 'rock', 'scissors']
-img_size_net = 128
+sorts_list = ['Czech', 'India', 'Japan']
+img_size_net = 300
 CONV_INPUT = "x_input_input"
 #CONV_INPUT = "x_input"
 calib_batch_size = 30
@@ -18,10 +18,9 @@ def load_valid_data(data_path):
     test_images = []
     test_lables = []
     for sort_path in sorts_list:    
-        flower_list = os.listdir(data_path + sort_path)
-        print(flower_list)
-        for img_name in flower_list:
-            img_path = data_path + sort_path + "/" + img_name
+        crack_list = os.listdir(data_path + sort_path + "/images")
+        for img_name in crack_list:
+            img_path = data_path + sort_path + "/images" + "/" + img_name
             img = cv2.imread(img_path)  
             img_scale = cv2.resize(img,(img_size_net, img_size_net), interpolation = cv2.INTER_CUBIC)
             if not img is None:
